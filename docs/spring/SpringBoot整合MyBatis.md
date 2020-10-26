@@ -1,4 +1,4 @@
-#### 1.在pom.xml中添加依赖
+### 1.在pom.xml中添加依赖
 
 ```
 <!--mysql-->
@@ -38,7 +38,7 @@
     <version>1.1.9</version>
 </dependency>
 ```
-#### 2.在yml中配置数据源
+### 2.在yml中配置数据源
 
 ```
 spring:
@@ -66,7 +66,7 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
 ```
-#### 3.在项目目录下新建xml文件generatorConfig.xml
+### 3.在项目目录下新建xml文件generatorConfig.xml
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -105,7 +105,7 @@ pagehelper:
     </context>
 </generatorConfiguration>
 ```
-#### 4.新建工具类GeneratorDisplay来生成sql语句
+### 4.新建工具类GeneratorDisplay来生成sql语句
 
 ```
 package com.sunlei.demo.utils;
