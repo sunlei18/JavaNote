@@ -17,11 +17,12 @@
 
 4.加锁和解锁必须是同一个客户端，客户端自己不能把其他客户端的锁解了。
 
-##一.业务使用分布式锁
+## 一.业务使用分布式锁
 
  使用分布式锁的场景一般发生在多线程去执行段业务逻辑，锁的细粒度越细越好。主要逻辑为：设置一个全局唯一key，尝试加锁，加锁成功执行业务逻辑，加锁失败直接返回，无论加锁成功还是失败都执行解锁操作。加锁成功的线程执行解锁操作时，能正确解锁；加锁失败的线程执行解锁操作时，是没有锁可以解的，这是设置的每个线程加锁的value值不同保证的。
- ```
-public void  redisHandle(){
+ ```java
+public class Demo {
+    public void  redisHandle(){
         //处理多台机器重复执行的问题
         String lockKey = DateFormatUtils.format(new Date(), "yyyyMMddHHmm");
         try{
@@ -37,9 +38,10 @@ public void  redisHandle(){
             redisLock.unlock();
         }
     }
+}
  ```
 
-##二.旧版本代码
+## 二.旧版本代码
 
 1.代码逻辑
 
@@ -59,7 +61,7 @@ public void  redisHandle(){
 
 （4）解锁sleep耗费性能。
 
-```
+```java
 public class RedisLock {
  
     private static Logger logger = LoggerFactory.getLogger(RedisLock.class);
@@ -212,7 +214,7 @@ public class RedisLock {
 
 这里的locked被volatile关键字修饰，保证变量的可见性，被volatile关键字修饰的变量，如果值发生了变更，其他线程立马可见，避免出现脏读的现象。
 
-##三.新版本代码
+## 三.新版本代码
 Lua脚本保证了加锁和解锁的原子性。加锁的时候，加锁和设置锁过期时间两步操作原子性，解锁的时候，判断锁标识和解锁两步操作原子性。
 
 保证加锁原子性：

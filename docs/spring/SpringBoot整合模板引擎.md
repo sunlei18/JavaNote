@@ -1,5 +1,5 @@
-##  SpringBoot整合Freemaker
-#### 1.在pom.xml中引入依赖
+## 一.SpringBoot整合Freemaker
+### 1.在pom.xml中引入依赖
 
 ```
 <dependency>
@@ -7,7 +7,7 @@
     <artifactId>spring-boot-starter-freemarker</artifactId>
 </dependency>
 ```
-#### 2.在application.yml中配置Freemaker
+### 2.在application.yml中配置Freemaker
 
 ```
 spring:
@@ -22,14 +22,14 @@ spring:
         request-context-attribute: request
         suffix: .ftl
 ```
-#### 3.在resources下新建resource.properties
+### 3.在resources下新建resource.properties
 
 ```
 com.sunlei.opensource.name=123
 com.sunlei.opensource.website=www.123.com
 com.sunlei.opensource.language=java
 ```
-#### 4.新建POJO为Resource.java
+### 4.新建POJO为Resource.java
 
 ```
 package com.sunlei.demo.pojo;
@@ -67,7 +67,7 @@ public class Resource {
 }
 
 ```
-#### 5.新建控制层controller
+### 5.新建控制层controller
 
 ```
 @RequestMapping("/index")
@@ -76,7 +76,7 @@ public String index(ModelMap map) {
     return "freemarker/index";
 }
 ```
-#### 6.新建ftl文件
+### 6.新建ftl文件
 
 ```
 <!DOCTYPE html>
@@ -97,8 +97,8 @@ FreeMarker模板引擎
 
 
 ******
-## SpringBoot整合Thymeleaf
-#### 1.在pom.xml文件中引入依赖
+## 二.SpringBoot整合Thymeleaf
+### 1.在pom.xml文件中引入依赖
 
 ```
 <dependency>
@@ -106,7 +106,7 @@ FreeMarker模板引擎
     <artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
 ```
-#### 2.在application.yml中配置Thymeleaf
+### 2.在application.yml中配置Thymeleaf
 
 ```
 spring:
@@ -119,7 +119,7 @@ spring:
       content-type: text/html
     cache: false
 ```
-#### 3.编辑控制层代码
+### 3.编辑控制层代码
 
 ```
 @RequestMapping("index")
@@ -129,7 +129,7 @@ public String index(ModelMap map){
 }
 ```
 
-#### 4.在templates目录下新建html文件
+### 4.在templates目录下新建html文件
 
 ```
 <!DOCTYPE html>
